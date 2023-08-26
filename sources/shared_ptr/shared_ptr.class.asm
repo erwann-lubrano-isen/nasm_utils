@@ -5,7 +5,7 @@
 
 global class@Shared_ptr#constructor@size
 global class@Shared_ptr#copy_constructor@Shared_ptr
-global class@Shared_ptr#method@delete
+global class@Shared_ptr#controller@class
 
 section .text
 

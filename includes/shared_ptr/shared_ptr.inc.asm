@@ -7,15 +7,16 @@
 
 extern class@Shared_ptr#constructor@size
 extern class@Shared_ptr#copy_constructor@Shared_ptr
-extern class@Shared_ptr#method@delete
+extern class@Shared_ptr#controller@class
 
 %else
 
 %include "includes/Clib.inc.asm"
 %include "includes/class.inc.asm"
-%include "includes/ptr/ptr.inc.asm"
 
 %endif
+
+%include "includes/ptr/ptr.inc.asm"
 
 %define class_Shared_ptr_id 0x0C_C5_A1_A3
 %define class_Shared_ptr_sizeof 16
