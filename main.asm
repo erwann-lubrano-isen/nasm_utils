@@ -44,8 +44,15 @@ main :
 	lea rcx, [ptr_2]
 	exec 0, 3
 	
+	mov rcx, msg
+	call printf
+	
+	
 	lea rcx, [ptr_2]
 	exec 0, 1
+	
+	mov rcx, msg
+	call printf
 	
 	mov rsp, rbp
 	pop rbp

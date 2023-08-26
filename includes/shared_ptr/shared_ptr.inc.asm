@@ -27,7 +27,9 @@ extern class@Shared_ptr#method@delete
 ;	total : 16 octets
 ;
 ;heap :
-;	address : 8
-;	counter : 8
+;	address : 8							0
+;	counter : 4							8
+;	flag 	: 4, call_delete(0b1)		12
+
 
 %endif

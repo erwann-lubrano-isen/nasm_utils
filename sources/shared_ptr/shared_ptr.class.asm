@@ -39,8 +39,8 @@ class@Shared_ptr#constructor@size:
 	;---
 	
 	;this->ptr->count = 1
-	mov QWORD[rax+8], 1
-	
+	mov DWORD[rax+8], 1
+	mov DWORD[rax+12], 0
 	mov rcx, [rbp+16]
 	call malloc
 	
@@ -52,6 +52,14 @@ class@Shared_ptr#constructor@size:
 	mov rcx, [rbp+24]
 	mov rdx, [rcx+8]
 	mov [rdx], rax
+	
+	mov r8, [rbp+16]
+	cmp r8, 8
+	jl .L2
+	mov DWORD[rdx+12],1
+	xor r8, r8
+	mov [rax], r8
+.L2:
 	
 	mov rsp, rbp
 	pop rbp
@@ -79,7 +87,7 @@ class@Shared_ptr#copy_constructor@Shared_ptr:
 	mov [rcx+8],rdx
 	
 	;++this->ptr->count
-	inc QWORD[rdx+8]
+	inc DWORD[rdx+8]
 	
 	mov rsp, rbp
 	pop rbp
@@ -119,7 +127,7 @@ class@Shared_ptr#method@delete:
 	mov [rbp+24], rcx
 	
 	mov rdx, [rcx+8]
-	dec QWORD[rdx+8]
+	dec DWORD[rdx+8]
 	;cmp QWORD[rdx+8], 0
 	jnz .L1
 	;---------------------
@@ -128,8 +136,18 @@ class@Shared_ptr#method@delete:
 	mov rdx, [rbp+16]
 	;---------------------
 	;delete this->ptr->ptr
+	mov r8, [rbp+24]
+	mov r8, [r8+8]
+	mov r10d, [r8+12]
+	test r10d, 1
+	jz .L3
+	mov r10, [r8]
+	mov r10, [r10]
+	cmp r10, 0
+	jz .L3
 	mov rcx, [rdx]
 	exec 0, 1
+.L3:
 	mov rcx, [rbp+24]
 	mov rcx, [rcx+8]
 	mov rcx, [rcx]
