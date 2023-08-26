@@ -5,7 +5,7 @@
 
 %ifndef __LIST_NODE_CLASS__
 
-class@List#constructor@size
+extern class@List_Node#constructor@size
 
 %else
 
@@ -21,8 +21,8 @@ class@List#constructor@size
 
 %define class_List_Node_method_get_prev 0xC9F88C76
 %define class_List_Node_method_get_next 0x7135141F
-%define class_List_Node_method_insert_before 0x3B46C39E
-%define class_List_Node_method_insert_after 0x97D16CC9
+%define class_List_Node_method_set_prev 0x3B46C39E
+%define class_List_Node_method_set_next 0x97D16CC9
 %define class_List_Node_method_remove 0x924E7AF0
 
 ;extends shared_ptr	: 16 octets 	: this+0 	
