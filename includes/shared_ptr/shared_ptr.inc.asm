@@ -13,6 +13,7 @@ extern class@Shared_ptr#method@delete
 
 %include "includes/Clib.inc.asm"
 %include "includes/class.inc.asm"
+%include "includes/ptr/ptr.inc.asm"
 
 %endif
 

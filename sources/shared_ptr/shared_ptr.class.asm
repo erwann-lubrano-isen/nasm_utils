@@ -96,6 +96,8 @@ class@Shared_ptr#copy_constructor@Shared_ptr:
 ;-------------------controller--------------------
 
 class@Shared_ptr#controller@class:
+	cmp r10, class_Ptr_id
+	jz class@Ptr#controller@method
 	cmp r10, class_Shared_ptr_id
 	jz class@Shared_ptr#controller@method
 	cmp r10, 0
@@ -113,6 +115,11 @@ class@default#controller@method:
 
 class@Shared_ptr#controller@method:
 	cmp r11, class_Shared_ptr_method_get_ptr
+	jz class@Shared_ptr#method@get_ptr
+	ret
+
+class@Ptr#controller@method:
+	cmp r11, class_Ptr_method_get_ptr
 	jz class@Shared_ptr#method@get_ptr
 	ret
 	
