@@ -72,7 +72,9 @@ class@List_Node#method@set_prev:
 	mov [rcx+16], rdx
 	cmp rdx, 0
 	jz .L1
-	
+
+        mov r8, [rdx+24]
+        mov [rcx+24], r8
 	mov [rdx+24], rcx
 	
 .L1:	
@@ -82,9 +84,11 @@ class@List_Node#method@set_next:
 	mov [rcx+24], rdx
 	cmp rdx, 0
 	jz .L2
-	
+
+        mov r8, [rdx+16]
+        mov [rcx+16], r8
 	mov [rdx+16], rcx
-	
+
 .L2:	
 	ret
 	
